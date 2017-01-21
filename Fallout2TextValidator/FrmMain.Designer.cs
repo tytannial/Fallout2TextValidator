@@ -35,6 +35,7 @@
             this.ckbSubDir = new System.Windows.Forms.CheckBox();
             this.lblErrorList = new System.Windows.Forms.Label();
             this.cbxEncoding = new System.Windows.Forms.ComboBox();
+            this.ckbFullLog = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnCheck
@@ -97,9 +98,9 @@
             this.lblErrorList.AutoSize = true;
             this.lblErrorList.Location = new System.Drawing.Point(12, 9);
             this.lblErrorList.Name = "lblErrorList";
-            this.lblErrorList.Size = new System.Drawing.Size(383, 12);
+            this.lblErrorList.Size = new System.Drawing.Size(401, 12);
             this.lblErrorList.TabIndex = 5;
-            this.lblErrorList.Text = "If error list here, please check log file for more information.";
+            this.lblErrorList.Text = "If error listed here, please check log files for more information.";
             // 
             // cbxEncoding
             // 
@@ -113,16 +114,27 @@
             "Windows-1251",
             "ANSI",
             "UTF-8"});
-            this.cbxEncoding.Location = new System.Drawing.Point(175, 528);
+            this.cbxEncoding.Location = new System.Drawing.Point(298, 528);
             this.cbxEncoding.Name = "cbxEncoding";
             this.cbxEncoding.Size = new System.Drawing.Size(121, 20);
             this.cbxEncoding.TabIndex = 6;
+            // 
+            // ckbFullLog
+            // 
+            this.ckbFullLog.AutoSize = true;
+            this.ckbFullLog.Location = new System.Drawing.Point(175, 530);
+            this.ckbFullLog.Name = "ckbFullLog";
+            this.ckbFullLog.Size = new System.Drawing.Size(72, 16);
+            this.ckbFullLog.TabIndex = 7;
+            this.ckbFullLog.Text = "Full log";
+            this.ckbFullLog.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.ckbFullLog);
             this.Controls.Add(this.cbxEncoding);
             this.Controls.Add(this.lblErrorList);
             this.Controls.Add(this.ckbSubDir);
@@ -147,6 +159,7 @@
         private System.Windows.Forms.CheckBox ckbSubDir;
         private System.Windows.Forms.Label lblErrorList;
         private System.Windows.Forms.ComboBox cbxEncoding;
+        public System.Windows.Forms.CheckBox ckbFullLog;
     }
 }
 

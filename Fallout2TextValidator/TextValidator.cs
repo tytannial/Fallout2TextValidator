@@ -13,14 +13,17 @@ namespace Fallout2TextValidator
     {
         string token;
 
-        public void ValidateFiles(string[] files, string encoding, string token)
+        public void ValidateFiles(string root, string[] files, string encoding, string token)
         {
             this.token = token;
             int totalrows = 0;
             int totalcount = 0;
             foreach (var file in files)
             {
-                //WriteLog(string.Format("Check {0}", file), token);
+                if (FrmMain.frmMain.ckbFullLog.Checked)
+                {
+                    WriteLog(string.Format("Check {0}", file), token);
+                }
                 int line = 0;
                 int rows = 0;
                 int count = 0;
@@ -36,7 +39,7 @@ namespace Fallout2TextValidator
                         while ((text = sr.ReadLine()) != null)
                         {
                             ++line;
-                            if (text.Equals(string.Empty))
+                            if (text.Equals(string.Empty) || text[0].Equals('#'))
                             {
                                 continue;
                             }
@@ -47,6 +50,7 @@ namespace Fallout2TextValidator
                                 {
                                     block += (text.Length - text.Replace("}", "").Length) / "}".Length;
                                     text2 += text.Replace("\r\n", "");
+                                    //WriteLog(text2, token);
                                     if (block == 3)
                                     {
                                         endline = true;
@@ -78,11 +82,14 @@ namespace Fallout2TextValidator
                 totalcount += count;
                 if (rows == count / 2 && rows == lst.Count)
                 {
-                    //WriteLog(string.Format("validate complate. It has {1} text lines.", file, rows), token);
+                    if (FrmMain.frmMain.ckbFullLog.Checked)
+                    {
+                        WriteLog(string.Format("validate complate. It has {1} text lines.", file, rows), token);
+                    }
                 }
                 else
                 {
-                    string text = string.Format("There may be some problems in {0}. Block Check: {1}/{2}, the text count is {3}", file, rows, count / 2, lst.Count);
+                    string text = string.Format("There may be some problems in {0}. Block Check: {1}/{2}, the text count is {3}", file.Replace(root, string.Empty), rows, count / 2, lst.Count);
                     WriteLog(text, token);
                     FrmMain.frmMain.ListBoxError.Items.Add(text);
                 }

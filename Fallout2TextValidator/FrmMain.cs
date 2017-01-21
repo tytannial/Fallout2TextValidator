@@ -23,7 +23,7 @@ namespace Fallout2TextValidator
             {
                 ListBoxError.Items.Clear();
                 string[] files = Directory.GetFiles(txbPath.Text, "*.MSG", ckbSubDir.Checked ? SearchOption.AllDirectories : 0);
-                validator.ValidateFiles(files, cbxEncoding.SelectedItem.ToString(), DateTime.Now.ToString("yyyyMMddHHmmss"));
+                validator.ValidateFiles(txbPath.Text + "\\", files, cbxEncoding.SelectedItem.ToString(), DateTime.Now.ToString("yyyyMMddHHmmss"));
             }
         }
 
